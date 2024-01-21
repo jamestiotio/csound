@@ -57,10 +57,6 @@ endif()
 
 message(STATUS "Csound directory: ${CMAKE_HOME_DIRECTORY}")
 
-# C++11 needed
-if(NOT MSVC)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-endif()
 
 # Project definitions
 set(APIVERSION "7.0")
@@ -163,8 +159,8 @@ if(BARE_METAL)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -DNO_CSOUND_SERVER")
     if(CUSTOM_MALLOC)
      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -DCUSTOM_MALLOC")
-    # the default is for STM32H7: -DMALLOC_BASE=0xC0000000 
-    endif() 
+    # the default is for STM32H7: -DMALLOC_BASE=0xC0000000
+    endif()
 endif()
 
 # Include this after the install path definitions so we can override them here.
@@ -279,11 +275,6 @@ if(WIN32)
     endif()
 endif()
 
-# MacOS/IOS c++11 flags
-if(APPLE)
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -stdlib=libc++")
-    set_target_properties(${CSOUNDLIB} PROPERTIES CXX_COMPILE_FLAGS  "-std=c++11")
-endif()
 
 set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -581,7 +572,7 @@ endif()
 set(libcsound_CFLAGS -D__BUILDING_LIBCSOUND)
 
 list(APPEND libcsound_private_include_dirs ${Csound_SOURCE_DIR}/H)
-list(APPEND libcsound_public_include_dirs 
+list(APPEND libcsound_public_include_dirs
     $<BUILD_INTERFACE:${Csound_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
