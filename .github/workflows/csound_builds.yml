@@ -163,7 +163,7 @@ jobs:
         run: cmake --build build --target test csdtests
 
   windows_build:
-    name: Windows build
+    name: Windows build (vcpkg)
     runs-on: windows-latest
     steps:
       - name: Checkout Source Code
