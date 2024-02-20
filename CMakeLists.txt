@@ -5,6 +5,7 @@ else()
 endif()
 
 cmake_policy(SET CMP0077 NEW)
+cmake_policy(SET CMP0075 NEW)
 
 include(cmake/cmake-utilities.cmake)
 
